@@ -8,7 +8,7 @@
 
 local TITAN_ID = "StoryTellerAuto"
 local TITAN_BUTTON = "TitanPanelStoryTellerAutoButton"
-local TITAN_VERSION = "1.5.0"
+local TITAN_VERSION = "1.5.1"
 local TITAN_ICON = "Interface\\Icons\\INV_Misc_Book_08"
 
 local function API()

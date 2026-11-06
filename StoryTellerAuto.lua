@@ -13,10 +13,25 @@
 --   /storyauto delete <n>    remove one of your saved stories
 --   /storyauto help       this list
 
-local ADDON_VERSION = "1.5.0"
+local ADDON_VERSION = "1.5.1"
 
-StoryTellerAutoDB = type(StoryTellerAutoDB) == "table" and StoryTellerAutoDB or {}
-local db = StoryTellerAutoDB
+-- This client loads SavedVariables after the addon files have executed, so the
+-- table has to be picked up again on ADDON_LOADED. Holding the file-scope table
+-- would leave every read and write pointed at an empty orphan.
+local db
+local function InitDB()
+	StoryTellerAutoDB = type(_G.StoryTellerAutoDB) == "table" and _G.StoryTellerAutoDB or {}
+	db = StoryTellerAutoDB
+end
+InitDB()
+
+local dbLoader = CreateFrame("Frame")
+dbLoader:RegisterEvent("ADDON_LOADED")
+dbLoader:SetScript("OnEvent", function(self, _, addOnName)
+	if addOnName ~= "StoryTellerAuto" then return end
+	InitDB()
+	self:UnregisterEvent("ADDON_LOADED")
+end)
 
 local function Print(msg)
 	if DEFAULT_CHAT_FRAME then
