@@ -1,0 +1,19 @@
+## Interface: 16001
+## Title: |cff33ff99StoryTeller|r Auto Read
+## Notes: A story picker that reads a StoryTeller script from start to finish on its own. Ships with Barrens chat Chuck Norris facts; add, edit and delete your own stories right in the picker.
+## Author: local
+## Version: 1.5.0
+## Dependencies: StoryTeller
+## OptionalDeps: Titan
+## SavedVariables: StoryTellerAutoDB
+## IconTexture: Interface\Icons\INV_Misc_Book_08
+## Category: Roleplay
+
+Stories.lua
+StoryTellerAuto.lua
+Titan.lua
+
+
+
+
+
